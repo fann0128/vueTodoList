@@ -1,4 +1,4 @@
-# vue_to_di
+# vue_to_do
 
 > A Vue.js project
 

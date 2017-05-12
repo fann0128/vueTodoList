@@ -5,11 +5,11 @@
     <button @click="addNewTodo">Add To List</button>
     <br>
     <ul>
-      <li v-for="todo in myTodos"> {{ todo.description }} <a v-if="!todo.compelete" @click="todoDone(todo.description)">Done</a> </li>
+      <li v-for="todo in myTodos" v-if="!todo.compelete"> {{ todo.description }} <a v-if="!todo.compelete" @click="todoDone(todo.description)">Done</a> </li>
     </ul>
     <h1>My Done List</h1>
     <ul>
-      <li v-for="todo in myTodos" v-if="todo.compelete" v-text="todo.description"></li>
+      <li v-for="todo in myTodos" v-if="todo.compelete"> {{todo.description}} <a v-if="todo.compelete" @click="todoNotDone(todo.description)">Not Done</a></li>
     </ul>
   </div>
 </template>
@@ -32,6 +32,9 @@ export default {
     },
     todoDone: function (desc) {
       this.myTodos.find(function (todo) { if (todo.description === desc) { todo.compelete = true } })
+    },
+    todoNotDone: function (desc) {
+      this.myTodos.find(function (todo) { if (todo.description === desc) { todo.compelete = false } })
     }
   }
 }
